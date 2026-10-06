@@ -261,3 +261,59 @@ td {
   width: 100%;                
   margin-top: 0.5rem;
 }
+
+.login-wrap {
+    min-height: calc(100vh - 0px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.login-card {
+    width: 100%;
+    max-width: 360px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 2rem;
+    color: var(--text);
+}
+.login-card h1 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+.login-card p.muted {
+    margin: 0 0 1.4rem 0;
+}
+.login-card label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.login-card input {
+    display: block;
+    width: 100%;
+    margin-top: 0.3rem;
+    padding: 0.55rem 0.6rem;
+    border: 1px solid var(--line);
+    font-family: inherit;
+    font-size: 1rem;
+}
+.login-card .btn {
+    width: 100%;
+    margin-top: 0.4rem;
+}
+.login-msg {
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+.login-msg.error {
+    background: var(--danger);
+    color: #fff;
+}
+.login-msg.info {
+    background: var(--accent-2);
+    color: #fff;
+}
