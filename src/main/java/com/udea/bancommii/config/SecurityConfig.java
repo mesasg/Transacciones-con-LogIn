@@ -39,6 +39,13 @@ public class SecurityConfig {
     }
 
     @Bean
+    public CookieCsrfTokenRepository csrfTokenRepository() {
+    CookieCsrfTokenRepository repository = CookieCsrfTokenRepository.withHttpOnlyFalse();
+    repository.setCookieCustomizer(cookie -> cookie.sameSite("Strict"));
+    return repository;
+}
+
+    @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.builder()
                 .username(appUsername)
@@ -81,7 +88,10 @@ public class SecurityConfig {
             // legible (XSRF-TOKEN) para que el formulario de logout pueda usarlo.
             .csrf(csrf -> csrf
                 .ignoringRequestMatchers("/api/**")
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+
+                .csrfTokenRepository(csrfTokenRepository())
+               // .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
             )
             // Fuerza que el token CSRF se cargue (y por lo tanto se escriba la
